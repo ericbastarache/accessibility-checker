@@ -1,0 +1,32 @@
+{
+    "data": {
+        "dashboard": {
+            "issuesResolvedLast60Days": [
+                {
+                    "name": "Issues Resolved - last 60 Days",
+                    "value": 5
+                }
+            ],
+            "issuesOpenLonger60Days": [
+                {
+                    "name":"Issues Open - 60+ Days",
+                    "value": 22
+                }
+            ],
+            "pagesAnalyzed": [
+                {
+                    "name": "Last 30 days",
+                    "value": 50
+                },
+                {
+                    "name": "Last 60 days",
+                    "value": 65
+                },
+                {
+                    "name":"Last 90 days",
+                    "value": 110
+                }
+            ]
+        }
+    }
+}

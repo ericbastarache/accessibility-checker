@@ -1,0 +1,43 @@
+{
+    "data": {
+        "report": {
+            "id": 100,
+            "page": "http://localhost:3000/wideduckass",
+            "image": "../images/image.png",
+            "issueCount": [
+                {
+                    "name": "Resolved Issues",
+                    "value": 1
+                },
+                {
+                    "name": "Open Issues",
+                    "value": 3
+                }
+            ],
+            "openIssues": [
+                {
+                    "id": 111,
+                    "issue": "Expected font size to be at least 14px for p tag, got 12px",
+                    "issueId": 45
+                },
+                {
+                    "id": 211,
+                    "issue": "Expected font size to be at least 14px for div tag, got 12px",
+                    "issueId": 24
+                },
+                {
+                    "id": 311,
+                    "issue": "Expected h1 tag to be first heading tag on the page, got h2 instead",
+                    "issueId": 16
+                }
+            ],
+            "resolvedIssues": [
+                {
+                    "id": 255,
+                    "issue": "Expected page to only contain one h1 element",
+                    "issueId": 88
+                }
+            ]
+        }
+    }
+}

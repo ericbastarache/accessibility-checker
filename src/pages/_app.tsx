@@ -1,6 +1,14 @@
 import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppContext, AppInitialProps, AppLayoutProps } from 'next/app';
+import type { NextComponentType } from 'next';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const App: NextComponentType<AppContext, AppInitialProps, AppLayoutProps> = ({
+  Component,
+  pageProps,
+}: AppLayoutProps) => {
+  const getLayout = Component.getLayout || ((page: React.ReactNode) => page)
+
+  return getLayout(<Component {...pageProps} />)
 }
+
+export default App;

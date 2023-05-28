@@ -1,0 +1,21 @@
+{
+    "data": {
+        "pages": [
+            {
+                "id": 100,
+                "page": "http://localhost:3000/wideduckass",
+                "issues": 3
+            },
+            {
+                "id": 101,
+                "page": "http://localhost:3000/peepohappy",
+                "issues": 3
+            },
+            {
+                "id": 102,
+                "page": "http://localhost:3000/kappa",
+                "issues": 3
+            }
+        ]
+    }
+}
