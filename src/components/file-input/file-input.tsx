@@ -1,6 +1,6 @@
 import React, { Fragment, useRef, useState } from 'react';
-import Progress from '@/components/common/progress/progress';
-import Button from '@/components/common/button/button';
+import Progress from '../common/progress';
+import Button from '../common/button';
 
 const FileInput = () => {
     const fileInput = useRef<HTMLInputElement | any>(null);
