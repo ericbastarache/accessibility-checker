@@ -1,4 +1,4 @@
-export const addElement = (tagName, body, position) => {
+export const addElement = (tagName: any, body: string, position: DOMRect) => {
     try {
         const elem = document.createElement('div');
         const hr = document.createElement('hr');
