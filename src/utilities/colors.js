@@ -1,10 +1,4 @@
-type RGB = {
-    r: number,
-    g: number,
-    b: number
-};
-
-export const parseColor = (color: string): RGB => {
+const parseColor = (color) => {
     let r, g, b;
 
     if (color.startsWith('#')) {
@@ -27,9 +21,9 @@ export const parseColor = (color: string): RGB => {
     return { r, g, b };
 }
 
-export const relativeLuminance = ({ r, g, b }: RGB): number => {
-    const sRGB = (color: number) => color / 255;
-    const adjustGamma = (value: number) => (value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4));
+const relativeLuminance = ({ r, g, b }) => {
+    const sRGB = (color) => color / 255;
+    const adjustGamma = (value) => (value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4));
   
     const R = adjustGamma(sRGB(r));
     const G = adjustGamma(sRGB(g));
@@ -38,9 +32,15 @@ export const relativeLuminance = ({ r, g, b }: RGB): number => {
     return 0.2126 * R + 0.7152 * G + 0.0722 * B;
 }
 
-export const contrastRatio = (lum1: number, lum2: number): number => {
+const contrastRatio = (lum1, lum2) => {
     const L1 = Math.max(lum1, lum2);
     const L2 = Math.min(lum1, lum2);
   
     return (L1 + 0.05) / (L2 + 0.05);
+}
+
+if (typeof window !== 'undefined') {
+  window.parseColor = parseColor;
+  window.relativeLuminance = relativeLuminance;
+  window.contrastRatio = contrastRatio;
 }

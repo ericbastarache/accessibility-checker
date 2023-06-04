@@ -1,4 +1,3 @@
-import { addElement } from "./common";
 
 const imageCheck = () => {
     try {
@@ -16,4 +15,6 @@ const imageCheck = () => {
     }
 };
 
-export default imageCheck;
+if (typeof window !== 'undefined') {
+    window.imageCheck = imageCheck;
+}

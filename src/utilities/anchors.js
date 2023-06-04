@@ -1,9 +1,3 @@
-import { addElement } from "./common";
-
-type Supplementing = {
-    supplements: boolean,
-    imgElement: null | HTMLImageElement
-}
 
 const checkAnchorElements = () => {
     try {
@@ -13,7 +7,7 @@ const checkAnchorElements = () => {
     
             const imgElements = anchorElement.querySelectorAll('img');
     
-            let isAltSupplementing: Supplementing = { supplements: false, imgElement: null };
+            let isAltSupplementing = { supplements: false, imgElement: null };
     
             for (let j = 0; j < imgElements.length; j++) {
                 const imgElement = imgElements[j];
@@ -40,8 +34,9 @@ const checkAnchorElements = () => {
     }
 }
 
-export default checkAnchorElements;
-
+if (typeof window !== 'undefined') {
+  window.checkAnchorElements = checkAnchorElements;
+}
 
 
 

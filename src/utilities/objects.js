@@ -1,6 +1,4 @@
-import { addElement } from "./common";
-
-const checkAnchorElements = () => {
+const checkObjects = () => {
     try {
         const objectElements = document.querySelectorAll('object');
 
@@ -20,10 +18,6 @@ const checkAnchorElements = () => {
     }
 }
 
-export default checkAnchorElements;
-
-
-
-
-
-
+if (typeof window !== 'undefined') {
+  window.checkObjects = checkObjects;
+}

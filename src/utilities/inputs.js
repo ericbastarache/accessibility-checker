@@ -1,5 +1,3 @@
-import { addElement } from "./common";
-
 const inputsWithName = () => {
     try {
         const inputs = document.querySelectorAll('input, textarea');
@@ -17,4 +15,6 @@ const inputsWithName = () => {
     }
 }
 
-export default inputsWithName;
+if (typeof window !== 'undefined') {
+  window.inputsWithName = inputsWithName;
+}

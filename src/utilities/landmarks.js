@@ -1,5 +1,3 @@
-import { addElement } from "./common";
-
 const checkLandmarkRoles = () => {
     try {
         const landmarks = document.querySelectorAll('div[role=banner], div[role=complementary], div[role=contentinfo], div[role=form], div[role=navigation], div[role=region], div[role=search]');
@@ -13,4 +11,6 @@ const checkLandmarkRoles = () => {
     }
 }
 
-export default checkLandmarkRoles;
+if (typeof window !== 'undefined') {
+  window.checkLandmarkRoles = checkLandmarkRoles;
+}
