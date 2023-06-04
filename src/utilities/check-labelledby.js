@@ -1,5 +1,3 @@
-import { addElement } from "./common";
-
 const checkLabelledBy = () => {
     try {
         const elements = document.querySelectorAll('[aria-labelledby]');
@@ -27,4 +25,6 @@ const checkLabelledBy = () => {
     }
 };
 
-export default checkLabelledBy;
+if (typeof window !== 'undefined') {
+  window.checkLabelledBy = checkLabelledBy;
+}

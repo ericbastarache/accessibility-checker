@@ -1,4 +1,4 @@
-export const addElement = (tagName: any, body: string, position: DOMRect) => {
+const addElement = (tagName, body, position) => {
     try {
         const elem = document.createElement('div');
         const hr = document.createElement('hr');
@@ -38,4 +38,8 @@ export const addElement = (tagName: any, body: string, position: DOMRect) => {
     } catch (err) {
         console.error(err);
     }
+}
+
+if (typeof window !== 'undefined') {
+  window.addElement = addElement;
 }

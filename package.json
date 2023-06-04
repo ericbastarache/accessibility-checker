@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run build:scripts && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:scripts": "rollup -c"
   },
   "dependencies": {
     "@types/node": "18.15.11",
@@ -28,5 +29,12 @@
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4",
     "zustand": "^4.3.7"
+  },
+  "devDependencies": {
+    "glob": "^10.2.6",
+    "rollup": "^2.79.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }

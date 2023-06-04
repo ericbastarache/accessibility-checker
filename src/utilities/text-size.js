@@ -1,5 +1,3 @@
-import { addElement } from './common';
-
 const styles = {
     border: '5px solid red',
     padding: '12px'
@@ -16,4 +14,7 @@ const sizeOfText = () => {
     }
 };
 
-export default sizeOfText;
+if (typeof window !== 'undefined') {
+  window.sizeOfText = sizeOfText;
+}
+
