@@ -4,9 +4,9 @@ import Button from '../common/button';
 
 const FileInput = () => {
     const fileInput = useRef<HTMLInputElement | any>(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<Boolean>(false);
 
-    const handleFileUpload = async () => {
+    const handleFileUpload = async (): Promise<void> => {
         const file = fileInput?.current?.files[0];
         const formData = new FormData();
         formData.append('file', file);
