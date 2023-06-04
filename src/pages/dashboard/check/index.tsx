@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import DashboardLayout from '@/components/common/layouts/dashboard';
-import FileInput from '@/components/file-input';
+import FileInput from '@/components/file-input/file-input';
 
 const Check = () => {
     return (

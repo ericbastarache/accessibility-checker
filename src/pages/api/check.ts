@@ -36,10 +36,10 @@ export default async function handler(
     stream.pipe(parser)
      .on('data', async (data) => {
         if (data) {
-            results.push(data);
+            results.push(data.toString());
         }
      })
-     .on('end', async () => {
+     .on('end', async (foo) => {
         const job = await puppeteerQueue.add({ urls: results });
 
         res.json({ message: 'Job has been queued', jobId: job.id });
