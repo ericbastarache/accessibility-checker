@@ -5,16 +5,12 @@ const puppeteerQueue = new Queue('puppeteer', { redis: { port: 6379, host: '127.
 
 
 function sanitizeUrl(url) {
-    // Trim any leading/trailing white spaces
     url = url.trim();
 
-    // Remove Zero-width space and other invisible unicode characters
     url = url.replace(/[\u200B-\u200D\uFEFF]/g, '');
 
-    // Use encodeURI to ensure the URL is valid
-    url = encodeURI(url);
 
-    return url;
+    return encodeURI(url.trim().replace(/[\u200B-\u200D\uFEFF]/g, ''));
 }
 
 puppeteerQueue.process(async (job) => {
@@ -31,7 +27,6 @@ puppeteerQueue.process(async (job) => {
 
     for (let url of urls) {
         const sanitizedUrl = sanitizeUrl(url);
-        console.log(`Navigating to: ${sanitizedUrl}`);
         try {
             await page.goto(`${sanitizedUrl}`);
 
