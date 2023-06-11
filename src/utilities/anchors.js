@@ -15,7 +15,8 @@ const checkAnchorElements = () => {
                 const altAttribute = imgElement.getAttribute('alt');
     
                 if (altAttribute === null) {
-                    addElement(imgElement, `Expected ${imgElement} to have an alt attribute, none found`, imgElement.getBoundingClientRect());
+                    imgElement.style.border = '5px solid red';
+                    addElement(`Expected ${imgElement} to have an alt attribute, none found`, imgElement);
                 }
                 else if (altAttribute !== '' && altAttribute !== anchorElement.textContent) {
                     isAltSupplementing = {
@@ -26,7 +27,8 @@ const checkAnchorElements = () => {
             }
     
             if (!isAltSupplementing.supplements && isAltSupplementing.imgElement !== null) {
-                addElement(isAltSupplementing.imgElement, `Expected ${isAltSupplementing.imgElement} to have an alt attribute, none found`, isAltSupplementing.imgElement.getBoundingClientRect());
+                isAltSupplementing.imgElement.style.border = '5px solid red';
+                addElement(`Expected ${isAltSupplementing.imgElement} to have an alt attribute, none found`, isAltSupplementing.imgElement);
             }
         }
     } catch (error) {
@@ -37,8 +39,4 @@ const checkAnchorElements = () => {
 if (typeof window !== 'undefined') {
   window.checkAnchorElements = checkAnchorElements;
 }
-
-
-
-
 

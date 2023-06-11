@@ -3,10 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import Queue from 'bull';
 
-const puppeteerQueue = new Queue('puppeteer', { redis: { port: 6379, host: '127.0.0.1' } });
+const puppeteerQueue = new Queue('puppeteer', { redis: { port: process.env.REDIS_PORT, host: process.env.REDIS_HOST } });
 
 
-function sanitizeUrl(url) {
+function sanitizeUrl(url: string): string {
     return encodeURI(url.trim().replace(/[\u200B-\u200D\uFEFF]/g, ''));
 }
 
@@ -26,35 +26,34 @@ puppeteerQueue.process(async (job) => {
         const sanitizedUrl = sanitizeUrl(url);
         try {
            await page.goto(`${sanitizedUrl}`);
-           const utilitiesDir = './dist/utilities';
-           const files = await fs.promises.readdir(utilitiesDir);
-
-           for (const file of files) {
-             const filePath = path.join(utilitiesDir, file);
-             const scriptContent = await fs.promises.readFile(filePath, 'utf8');
-             await page.addScriptTag({ content: scriptContent });
-           }
+           const scriptContent = await fs.promises.readFile('./dist/bundle.js', 'utf8');
+           await page.addScriptTag({ content: scriptContent });
 
            await page.evaluate(() => {
-            // do some checks here
-                sizeOfText();
+                window.sizeOfText();
+                window.checkLabelledBy();
+                window.checkHeadingStructure();
+                window.inputsWithName();
+                window.checkLandmarkRoles();
+                window.checkObjects();
+                window.checkAnchorElements();
            });
 
-           setTimeout(async () => {
-            let fileName = sanitizedUrl.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-            fileName = `${fileName}.png`;
+          await page.waitForTimeout(10000);
 
-            await page.screenshot({
-              path: `./${fileName}`,
-              fullPage: true,
-            });
-            await browser.close();
+          let fileName = sanitizedUrl.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+          fileName = `${fileName}.png`;
 
-          }, 12000);
+          await page.screenshot({
+            path: `./${fileName}`,
+            fullPage: true,
+          });
+
         } catch (err) {
             console.log(err);
         }
     }
+    await browser.close();
 });
 
 export default puppeteerQueue;

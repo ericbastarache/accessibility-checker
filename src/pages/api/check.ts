@@ -35,8 +35,8 @@ export default async function handler(
 
     stream.pipe(parser)
      .on('data', async (data) => {
-        if (data) {
-            results.push(data.toString());
+        if (data && Array.isArray(data)) {
+            data.forEach(item => results.push(item));
         }
      })
      .on('end', async (foo) => {

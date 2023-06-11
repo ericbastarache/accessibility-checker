@@ -9,7 +9,7 @@ const checkObjects = () => {
                 const textContent = objectElement.textContent.trim();
 
                 if (textContent === '') {
-                    addElement(objectElement, `Expected ${objectElement} to have a text alternative`, objectElement.getBoundingClientRect());
+                    addElement(`Expected ${objectElement} to have a text alternative`, objectElement);
                 }
             }
         }

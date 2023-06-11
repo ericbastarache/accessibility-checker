@@ -7,8 +7,8 @@ const checkHeadingStructure = () => {
         for (let i = 0; i < headingLevels.length; i++) {
             const expectedLevel = rootLevel + i;
             if (headingLevels[i] !== expectedLevel) {
-            headings[i].style.border = '5px solid red';
-            addElement(headings[i].tagName, `Expected h${expectedLevel} but got ${headings[i].tagName}`, headings[i].getBoundingClientRect());
+                headings[i].style.border = '5px solid red';
+                addElement(`Expected h${expectedLevel} but got ${headings[i].tagName}`, headings[i]);
             }
         }
     } catch (err) {
