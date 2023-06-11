@@ -1,0 +1,10 @@
+import './common.js';
+import './anchors.js';
+import './check-labelledby.js';
+import './colors.js';
+import './text-size.js';
+import './headings.js';
+import './inputs.js';
+import './landmarks.js';
+import './objects.js';
+import './index.css';

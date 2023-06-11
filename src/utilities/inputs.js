@@ -7,7 +7,7 @@ const inputsWithName = () => {
             
             if (!input.hasAttribute('name') || (input.getAttribute('name') === null || input.getAttribute('name') === '')) {
                 input.style.border = '5px solid red';
-                addElement(input.tagName, `Expected ${inputs[i]} to have a name attribute but none found`, input.getBoundingClientRect());    
+                addElement(`Expected ${inputs[i]} to have a name attribute but none found`, input);
             }
         }
     } catch (err) {

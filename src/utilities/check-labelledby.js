@@ -16,7 +16,7 @@ const checkLabelledBy = () => {
                 const labelledByElement = document.getElementById(labelledById);
     
                 if (!labelledByElement) {
-                    addElement(element.tagName, `Expected ${element} to have an aria-labelledby attribute but none was found`, element.getBoundingClientRect());
+                    addElement(`Expected ${element} to have an aria-labelledby attribute but none was found`, element);
                 }
             }
         }
