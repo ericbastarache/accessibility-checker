@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# sequelize
+config/*
+
 # next.js
 /.next/
 /out/

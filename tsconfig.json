@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*", "./models"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

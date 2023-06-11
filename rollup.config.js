@@ -1,26 +1,14 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { terser } from "rollup-plugin-terser";
 import glob from 'glob';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import css from 'rollup-plugin-css-only';
 
 export default {
-	input: Object.fromEntries(
-		glob.sync('src/utilities/*.js').map(file => [
-			path.relative(
-				'src',
-				file.slice(0, file.length - path.extname(file).length)
-			),
-			fileURLToPath(new URL(file, import.meta.url))
-		])
-	),
+    input: glob.sync('src/utilities/index.js'),
 	output: {
-		format: 'es',
-		dir: 'dist'
+        file: 'dist/bundle.js',
+        name: 'bundle.js',
+		format: 'iife',
     },
     plugins: [
-      resolve(), // so Rollup can find `ms`
-      commonjs(), // so Rollup can convert `ms` to an ES module
+        css({ output: 'bundle.css' }),
     ]
 };
